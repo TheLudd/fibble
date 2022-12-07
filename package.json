@@ -1,15 +1,18 @@
 {
-  "type": "module",
   "name": "tribble",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
+  "keywords": [ "test", "testdouble", "mock", "proxyquire" ],
   "license": "MIT",
+  "author": "",
+  "type": "module",
+  "exports": {
+    ".": "./lib/replace.js",
+    "./loader": "./lib/loader.js"
+  },
+  "scripts": {
+    "test": "node --experimental-import-meta-resolve --loader tribble/loader test/test.js"
+  },
   "devDependencies": {
     "eslint": "^8.29.0",
     "eslint-plugin-import": "^2.26.0",
