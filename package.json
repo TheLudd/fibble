@@ -11,7 +11,7 @@
     "./loader": "./lib/loader.js"
   },
   "scripts": {
-    "test": "node --experimental-import-meta-resolve --loader tribble/loader test/test.js"
+    "test": "node --experimental-import-meta-resolve --loader tribble/loader acceptancetest/test.js"
   },
   "devDependencies": {
     "eslint": "^8.29.0",
