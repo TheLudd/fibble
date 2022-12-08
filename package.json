@@ -2,7 +2,12 @@
   "name": "tribble",
   "version": "1.0.0",
   "description": "",
-  "keywords": [ "test", "testdouble", "mock", "proxyquire" ],
+  "keywords": [
+    "test",
+    "testdouble",
+    "mock",
+    "proxyquire"
+  ],
   "license": "MIT",
   "author": "",
   "type": "module",
@@ -11,11 +16,15 @@
     "./loader": "./lib/loader.js"
   },
   "scripts": {
-    "test": "node --experimental-import-meta-resolve --loader tribble/loader acceptancetest/test.js"
+    "acceptance": "node --experimental-import-meta-resolve --loader tribble/loader acceptancetest/test.js",
+    "test": "pnpm unit && pnpm acceptance",
+    "unit": "mocha"
   },
   "devDependencies": {
+    "chai": "^4.3.7",
     "eslint": "^8.29.0",
     "eslint-plugin-import": "^2.26.0",
+    "mocha": "^10.1.0",
     "prettier": "^2.8.0"
   }
 }
