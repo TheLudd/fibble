@@ -1,3 +1,4 @@
+import pad from 'pad'
 import { foo } from './stub-me.js'
 
-export const result = `processed ${foo()}`
+export const main = `processed ${pad(foo(), 5, '-')}`
