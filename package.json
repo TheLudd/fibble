@@ -13,10 +13,12 @@
   "type": "module",
   "exports": {
     ".": "./lib/replace.js",
-    "./loader": "./lib/loader.js"
+    "./loader": "./lib/loader.js",
+    "./package.json": "./package.json"
   },
   "scripts": {
     "acceptance": "node --experimental-import-meta-resolve --loader tribble/loader acceptancetest/test.js",
+    "prepublishOnly": "pnpm test",
     "test": "pnpm unit && pnpm acceptance",
     "unit": "mocha"
   },
