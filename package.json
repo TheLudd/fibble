@@ -9,7 +9,7 @@
     "proxyquire"
   ],
   "license": "MIT",
-  "author": "",
+  "author": "Ludwig Magnusson <ludwig@mediatool.com>",
   "type": "module",
   "exports": {
     ".": "./lib/replace.js",
