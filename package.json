@@ -19,7 +19,7 @@
   "scripts": {
     "acceptance": "node --experimental-import-meta-resolve --loader tribble/loader acceptancetest/test.js",
     "lint": "pnpm eslint . && pnpm prettier . --check && sort-package-json --check",
-    "prepublishOnly": "pnpm test",
+    "prepublishOnly": "pnpm lint && pnpm test",
     "test": "pnpm unit && pnpm acceptance",
     "unit": "mocha"
   },
