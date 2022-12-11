@@ -1,0 +1,76 @@
+version: 2.1
+
+commands:
+  install-pnpm:
+    steps:
+      - run:
+          name: Install pnpm package manager
+          command: |
+            curl -L https://pnpm.js.org/pnpm.js | sudo node - add --global pnpm@7
+  install:
+    steps:
+      - restore_cache:
+          name: 'Restoring cache'
+          key: pnpm-hash-{{ checksum "pnpm-lock.yaml" }}
+      - run:
+          name: 'Install packages'
+          command: pnpm install --frozen-lockfile
+      - save_cache:
+          name: 'Saving cache'
+          key: pnpm-hash-{{ checksum "pnpm-lock.yaml" }}
+          paths:
+            - ~/.local/share/pnpm/store
+  run-tests:
+    steps:
+      - run:
+          command: pnpm test
+          name: Run tests
+  lint:
+    steps:
+      - run:
+          name: Lint
+          command: pnpm lint
+  sort-package-json:
+    steps:
+      - run:
+          command: |
+            pnpm sort-package-json --check
+          name: Verify package json sorted
+
+jobs:
+  test:
+    parameters:
+      node-version:
+        type: string
+    resource_class: medium
+    docker:
+      - image: cimg/node:<< parameters.node-version >>
+    steps:
+      - checkout
+      - install-pnpm
+      - install
+      - run-tests
+  lint:
+    resource_class: medium
+    docker:
+      - image: cimg/node:lts
+    steps:
+      - checkout
+      - install-pnpm
+      - install
+      - lint
+
+workflows:
+  test-all:
+    jobs:
+      - lint
+      - test:
+          matrix:
+            parameters:
+              node-version:
+                - '16.12'
+                - '16.17'
+                - '18.6'
+                - '19.0'
+                - 'lts'
+                - 'current'
