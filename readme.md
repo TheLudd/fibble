@@ -1,6 +1,6 @@
-# tribble
+# fibble
 
-Tribble is a small library to insert test doubles into your test. It is heavily
+Fibble is a small library to insert test doubles into your test. It is heavily
 inspired by [quibble](https://github.com/testdouble/quibble) but targeted at es
 modules only. It was also made to support [pnpm](https://pnpm.io/) which
 creates a slightly different layout in the node_modules folder than other
@@ -8,7 +8,7 @@ package managers and is thus built independent of resolution algorithm.
 
 ## api
 
-There are two functions exported from tribble:
+There are two functions exported from fibble:
 
 - `replace(path, replacement)` - Replaces the module at `path` with the replacement.
 
@@ -24,9 +24,9 @@ There are two functions exported from tribble:
 
 ### setup
 
-To use tribble you must start node with the tribble loader and an experimental flag.
+To use fibble you must start node with the fibble loader and an experimental flag.
 
-`node --experimental-import-meta-resolve --loader tribble/loader [my app]`
+`node --experimental-import-meta-resolve --loader fibble/loader [my app]`
 
 Since these parameters are considered experimental in node, suppot might not be
 stable on upgrades of node.
@@ -38,7 +38,7 @@ This example uses mocha/chai but feel free to use in your favorite test runner.
 ```javascript
 import { describe, beforeEach, it } from 'mocha'
 import { assert } from 'chai'
-import { replace, reset } from 'tribble'
+import { replace, reset } from 'fibble'
 
 describe('my module', function(){
   let subject
@@ -62,6 +62,6 @@ Setup mocha like this:
 ```javascript
 // .mocharc.cjs
 module.exports = {
-  'node-option': ['experimental-import-meta-resolve', 'loader=tribble/loader'],
+  'node-option': ['experimental-import-meta-resolve', 'loader=fibble/loader'],
 }
 ```
