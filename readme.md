@@ -37,7 +37,7 @@ This example uses mocha/chai but feel free to use in your favorite test runner.
 
 ```javascript
 import { describe, beforeEach, it } from 'mocha'
-import { assert } from 'chai'
+import { expect } from 'chai'
 import { replace, reset } from 'fibble'
 
 describe('my module', function(){
