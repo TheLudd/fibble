@@ -12,7 +12,10 @@
   "author": "Ludwig Magnusson <ludwig@mediatool.com>",
   "type": "module",
   "exports": {
-    ".": "./lib/replace.js",
+    ".": {
+      "types": "./lib/replace.d.ts",
+      "import": "./lib/replace.js"
+    },
     "./loader": "./lib/loader.js",
     "./package.json": "./package.json"
   },
