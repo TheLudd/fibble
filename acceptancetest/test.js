@@ -4,7 +4,11 @@ import { replace, reset } from '../lib/replace.js'
 await replace('pad', { default: (string) => `${string} padded` })
 await replace('./stub-me.js', { foo: () => 'bar' })
 const { main: withStub } = await import('./file-under-test.js')
-equal(withStub, 'processed bar padded')
+equal(
+  withStub,
+  'processed bar padded',
+  'Original modules were loaded but expected stubs',
+)
 reset()
 // const { main: withoutStub } = await import('./file-under-test.js')
 // equal(withoutStub, 'processed foo')

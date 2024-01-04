@@ -16,11 +16,12 @@
       "types": "./lib/replace.d.ts",
       "import": "./lib/replace.js"
     },
-    "./loader": "./lib/loader.js",
+    "./loader": "./lib/legacy-loader.js",
+    "./register": "./lib/register.js",
     "./package.json": "./package.json"
   },
   "scripts": {
-    "acceptance": "node --experimental-import-meta-resolve --loader fibble/loader acceptancetest/test.js",
+    "acceptance": "./run-acceptance",
     "lint": "pnpm eslint . && pnpm prettier . --check && sort-package-json --check",
     "prepublishOnly": "pnpm lint && pnpm test",
     "test": "pnpm unit && pnpm acceptance",
@@ -33,9 +34,10 @@
     "mocha": "^10.1.0",
     "pad": "^3.2.0",
     "prettier": "^2.8.1",
+    "semver": "^7.5.4",
     "sort-package-json": "^2.1.0"
   },
   "engines": {
-    "node": "^16.12 || >18.6"
+    "node": ">=16.12.0 <20.0.0 || >20.6.0"
   }
 }

@@ -1,0 +1,14 @@
+#!/bin/bash
+version=`node -v`
+
+mode=$(node acceptancetest/determine-mode.js)
+
+echo Testing on $version
+
+if [[ $mode == "legacy" ]]; then
+	echo Legecy mode
+	node --experimental-import-meta-resolve --loader fibble/loader acceptancetest/test.js
+else
+	echo Modern mode
+	node --experimental-import-meta-resolve --import fibble/register acceptancetest/test.js
+fi

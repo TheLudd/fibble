@@ -24,12 +24,27 @@ There are two functions exported from fibble:
 
 ### setup
 
-To use fibble you must start node with the fibble loader and an experimental flag.
+There are two modes available depending on the version of node you run. This is because node has changed their API for loaders.
 
-`node --experimental-import-meta-resolve --loader fibble/loader [my app]`
+#### modern mode
 
-Since these parameters are considered experimental in node, suppot might not be
-stable on upgrades of node.
+Use this with node version `18.19.0` and above.
+
+```bash
+node --experimental-import-meta-resolve --import fibble/register [my app]
+```
+
+#### legacy mode
+
+Use this with node version `18.18.x` and below.
+
+```bash
+node --experimental-import-meta-resolve --loader fibble/loader [my app]
+```
+
+#### non supported versons
+
+Fibble does not support node version `20.0.0` - `20.5.x`.
 
 ### mocha example
 
@@ -62,6 +77,6 @@ Setup mocha like this:
 ```javascript
 // .mocharc.cjs
 module.exports = {
-  'node-option': ['experimental-import-meta-resolve', 'loader=fibble/loader'],
+  'node-option': ['experimental-import-meta-resolve', 'import=fibble/register'],
 }
 ```
