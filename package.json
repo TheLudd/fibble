@@ -26,16 +26,14 @@
     "test": "pnpm unit && pnpm acceptance",
     "unit": "mocha"
   },
-  "dependencies": {
-    "sort-package-json": "^2.1.0"
-  },
   "devDependencies": {
     "chai": "^4.3.7",
     "eslint": "^8.29.0",
     "eslint-plugin-import": "^2.26.0",
     "mocha": "^10.1.0",
     "pad": "^3.2.0",
-    "prettier": "^2.8.1"
+    "prettier": "^2.8.1",
+    "sort-package-json": "^2.1.0"
   },
   "engines": {
     "node": "^16.12 || >18.6"
