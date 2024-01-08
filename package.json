@@ -8,6 +8,7 @@
     "mock",
     "proxyquire"
   ],
+  "repository": "TheLudd/fibble",
   "license": "MIT",
   "author": "Ludwig Magnusson <ludwig@mediatool.com>",
   "type": "module",
