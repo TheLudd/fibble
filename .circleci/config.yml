@@ -6,7 +6,9 @@ commands:
       - run:
           name: Install pnpm package manager
           command: |
-            curl -L https://pnpm.js.org/pnpm.js | sudo node - add --global pnpm@8
+            sudo corepack enable
+            corepack prepare
+            pnpm -v
   install:
     steps:
       - restore_cache:
