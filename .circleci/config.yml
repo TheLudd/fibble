@@ -6,8 +6,7 @@ commands:
       - run:
           name: Install pnpm package manager
           command: |
-            sudo corepack enable
-            corepack prepare
+            sudo npm install -g "$(node -p 'require("./package.json").packageManager')"
             pnpm -v
   install:
     steps:
@@ -79,5 +78,6 @@ workflows:
                 - '21.0'
                 - '22.0'
                 - '24.0'
+                - '26.0'
                 - 'lts'
                 - 'current'
