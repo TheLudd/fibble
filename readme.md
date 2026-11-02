@@ -31,7 +31,7 @@ There are two modes available depending on the version of node you run. This is 
 Use this with node version `18.19.0` and above.
 
 ```bash
-node --experimental-import-meta-resolve --import fibble/register [my app]
+node --import fibble/register [my app]
 ```
 
 #### legacy mode
@@ -39,7 +39,7 @@ node --experimental-import-meta-resolve --import fibble/register [my app]
 Use this with node version `18.18.x` and below.
 
 ```bash
-node --experimental-import-meta-resolve --loader fibble/loader [my app]
+node --loader fibble/loader [my app]
 ```
 
 #### non supported versons
@@ -77,6 +77,6 @@ Setup mocha like this:
 ```javascript
 // .mocharc.cjs
 module.exports = {
-  'node-option': ['experimental-import-meta-resolve', 'import=fibble/register'],
+  'node-option': ['import=fibble/register'],
 }
 ```
